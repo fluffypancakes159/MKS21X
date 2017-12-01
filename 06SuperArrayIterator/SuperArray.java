@@ -1,11 +1,11 @@
-omprt java.util.*;
+import java.util.*;
 public class SuperArray implements Iterable<String>{
     
     private String [] data;
     private int size;
 
     public SuperArray ( ) {
-	new SuperArray ( 10 );
+	 this ( 10 );
     }
 
     public SuperArray ( int capacity ) {
@@ -138,29 +138,31 @@ public class SuperArray implements Iterable<String>{
 	return true;
     }
 
-    public SuperArrayIterator iterator ( ) {
-    	return new SuperArrayIterator ( data );
+    public Iterator<String> iterator ( ) {
+    	return new SuperArrayIterator ( this );
     }
 
-    private class SuperArrayIterator implements Iterator<Integer> {
-    	int index;
-    	public SuperArrayIterator ( String[] data ) {
-    		this.data = data;
+    public class SuperArrayIterator implements Iterator<String> {
+    	int index , length;
+    	String[] data;
+    	public SuperArrayIterator ( SuperArray SupArr ) {
+    		data = SupArr.data;
+    		length = SupArr.size( );
     		index = 0;
     	}
 
-    	public Integer next ( ) {
+    	public String next ( ) {
     		if ( hasNext ( ) ) {
     			index++;
     		}
     		else {
     			System.exit( 0 );
     		}
-    		return data[index - 1];
+    		return data[ index - 1 ];
     	}
 
     	public boolean hasNext ( ) {
-    		return index < data.length;
+    		return index < length;
     	}
 
     }
