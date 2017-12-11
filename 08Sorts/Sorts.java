@@ -12,6 +12,15 @@ public class Sorts {
 		ary[b] = temp;
 	}
 
+	public static boolean isSorted ( int[] ary ) {
+		for ( int i = 1 ; i < ary.length ; i++ ) {
+			if ( ary[i] < ary[i - 1] ) {
+				return false;
+			}
+		}
+		return true;
+	}
+
 	public static void selectionSort ( int[] data ) {
 		for ( int j = 0 ; j < data.length ; j++ ) {
 			int lowestIndex = j;
@@ -36,12 +45,19 @@ public class Sorts {
 		}
 	}
 
+	public static void bubbleSort ( int[] data ) {
+		while ( !isSorted ( data ) ) {
+
+		}
+	}
+
 	public static void main(String[] args) {
 		int[] A = { 13 , 14 , 5 , 18 , (int)(Math.random( ) * 27) };
 		int[] B = { 13 , 14 , 5 , 18 , (int)(Math.random( ) * 27) };
 		System.out.println( Arrays.toString( A ) );
 		selectionSort ( A );
 		System.out.println( Arrays.toString( A ) );
+		System.out.println( isSorted ( A ) );
 		System.out.println( "" );
 		System.out.println( Arrays.toString( B ) );
 		insertionSort ( B );
