@@ -46,14 +46,22 @@ public class Sorts {
 	}
 
 	public static void bubbleSort ( int[] data ) {
+		// boolean noSwaps = true;
+		int passes = 0;
 		while ( !isSorted ( data ) ) {
-
+			for ( int i = 0 ; i < data.length - 1 - passes ; i++ ) {
+				if ( data[i] > data[i + 1] ) {
+					swap ( data , i , i + 1);
+				}
+			}
+			passes++;
 		}
 	}
 
 	public static void main(String[] args) {
 		int[] A = { 13 , 14 , 5 , 18 , (int)(Math.random( ) * 27) };
 		int[] B = { 13 , 14 , 5 , 18 , (int)(Math.random( ) * 27) };
+		int[] C = { 13 , 14 , 5 , 18 , (int)(Math.random( ) * 27) };
 		System.out.println( Arrays.toString( A ) );
 		selectionSort ( A );
 		System.out.println( Arrays.toString( A ) );
@@ -62,5 +70,9 @@ public class Sorts {
 		System.out.println( Arrays.toString( B ) );
 		insertionSort ( B );
 		System.out.println( Arrays.toString( B ) );
+		System.out.println( "" );
+		System.out.println( Arrays.toString( C ) );
+		bubbleSort ( C );
+		System.out.println( Arrays.toString( C ) );
 	}
 }
